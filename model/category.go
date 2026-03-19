@@ -1,4 +1,4 @@
-package domain
+package model
 
 // Category represents the category table
 type Category struct {

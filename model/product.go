@@ -1,4 +1,4 @@
-package domain
+package model
 
 // Product represents the product table
 type Product struct {

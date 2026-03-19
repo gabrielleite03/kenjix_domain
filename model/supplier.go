@@ -1,4 +1,4 @@
-package domain
+package model
 
 // Supplier represents the supplier table
 type Supplier struct {

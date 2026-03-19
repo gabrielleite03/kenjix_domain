@@ -1,4 +1,4 @@
-package domain
+package model
 
 // Warehouse represents the warehouse table
 type Warehouse struct {
