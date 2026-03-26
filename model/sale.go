@@ -35,3 +35,25 @@ type SalesOrder struct {
 func (s *SalesOrder) Total() decimal.Decimal {
 	return s.Price.Sub(s.Discount)
 }
+
+func (s *SalesOrder) IsActive() bool {
+	return s.Active
+}
+
+func (s *SalesOrder) Deactivate() {
+	s.Active = false
+}
+
+type SalesOrderItem struct {
+	SalesOrderID int64           `json:"sales_order_id" db:"sales_order_id"`
+	ProductID    int64           `json:"product_id" db:"product_id"`
+	Quantity     int             `json:"quantity" db:"quantity"`
+	UnitPrice    decimal.Decimal `json:"unit_price" db:"unit_price"`
+
+	SalesOrder *SalesOrder `json:"sales_order,omitempty"`
+	Product    *Product    `json:"product,omitempty"`
+}
+
+func (i *SalesOrderItem) Total() decimal.Decimal {
+	return i.UnitPrice.Mul(decimal.NewFromInt(int64(i.Quantity)))
+}
