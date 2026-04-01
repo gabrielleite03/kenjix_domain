@@ -36,6 +36,7 @@ type WarehousePlace struct {
 	Active               bool   `json:"active" db:"active"`
 	WarehousePlaceTypeID *int64 `json:"warehouse_place_type_id,omitempty" db:"warehouse_place_type_id"`
 	WarehouseID          *int64 `json:"warehouse_id,omitempty" db:"warehouse_id"`
+	Capacity             *int64 `json:"capacity,omitempty" db:"capacity"`
 
 	WarehousePlaceType *WarehousePlaceType `json:"warehouse_place_type,omitempty"`
 	Warehouse          *Warehouse          `json:"warehouse,omitempty"`
