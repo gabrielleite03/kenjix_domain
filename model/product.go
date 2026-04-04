@@ -11,6 +11,7 @@ type Product struct {
 	Description string          `json:"description" db:"description"`
 	Active      bool            `json:"active" db:"active"`
 	CategoryID  *int64          `json:"category_id,omitempty" db:"category_id"`
+	Category    *Category       `json:"category,omitempty"`
 
 	Properties []ProductProperty `json:"properties,omitempty"`
 	Images     []ProductImage    `json:"images,omitempty"`
