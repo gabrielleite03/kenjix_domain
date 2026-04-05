@@ -21,7 +21,7 @@ type ExpenseCategory struct {
 }
 
 type Expense struct {
-	ID          string          `json:"id" db:"id"`
+	ID          int64           `json:"id" db:"id"`
 	Description string          `json:"description" db:"description"`
 	CategoryID  int64           `json:"category_id" db:"category_id"`
 	Amount      decimal.Decimal `json:"amount" db:"amount"`
