@@ -27,9 +27,9 @@ type ProductPrice struct {
 	MarketplaceID int64           `json:"marketplace_id" db:"marketplace_id"`
 	Price         decimal.Decimal `json:"price" db:"price"`
 	Active        bool            `json:"active" db:"active"`
-
-	Product     *Product     `json:"product,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	Volume        decimal.Decimal `json:"volume" db:"volume"`
+	Product       *Product        `json:"product,omitempty"`
+	Marketplace   *Marketplace    `json:"marketplace,omitempty"`
 }
 
 func (p *Product) IsActive() bool {
