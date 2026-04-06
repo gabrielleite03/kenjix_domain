@@ -13,9 +13,23 @@ type Product struct {
 	CategoryID  *int64          `json:"category_id,omitempty" db:"category_id"`
 	Category    *Category       `json:"category,omitempty"`
 
+	Prices []ProductPrice `json:"prices,omitempty"` // preços por marketplace
+	Stocks []Stock        `json:"stocks,omitempty"` // estoque por warehouse
+
 	Properties []ProductProperty `json:"properties,omitempty"`
 	Images     []ProductImage    `json:"images,omitempty"`
 	Videos     []ProductVideo    `json:"videos,omitempty"`
+}
+
+type ProductPrice struct {
+	ID            int64           `json:"id" db:"id"`
+	ProductID     int64           `json:"product_id" db:"product_id"`
+	MarketplaceID int64           `json:"marketplace_id" db:"marketplace_id"`
+	Price         decimal.Decimal `json:"price" db:"price"`
+	Active        bool            `json:"active" db:"active"`
+
+	Product     *Product     `json:"product,omitempty"`
+	Marketplace *Marketplace `json:"marketplace,omitempty"`
 }
 
 func (p *Product) IsActive() bool {
@@ -24,6 +38,10 @@ func (p *Product) IsActive() bool {
 
 func (p *Product) Deactivate() {
 	p.Active = false
+}
+
+func (p *ProductPrice) Activate() {
+	p.Active = true
 }
 
 type ProductProperty struct {
