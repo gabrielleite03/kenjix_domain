@@ -10,6 +10,7 @@ type Product struct {
 	Marca       string          `json:"marca" db:"marca"`
 	Description string          `json:"description" db:"description"`
 	Active      bool            `json:"active" db:"active"`
+	Volume      decimal.Decimal `json:"volume" db:"volume"`
 	CategoryID  *int64          `json:"category_id,omitempty" db:"category_id"`
 	Category    *Category       `json:"category,omitempty"`
 
