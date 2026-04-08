@@ -3,7 +3,7 @@ package model
 import "github.com/shopspring/decimal"
 
 type CostCenter struct {
-	ID          string               `json:"id" db:"id"`
+	ID          int64                `json:"id" db:"id"`
 	Name        string               `json:"name" db:"name"`
 	Code        string               `json:"code" db:"code"`
 	Description string               `json:"description" db:"description"`
