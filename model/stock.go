@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type StockMovementType string
 
@@ -11,11 +13,11 @@ const (
 )
 
 type Stock struct {
-	ProductID   int64     `json:"product_id" db:"product_id"`
-	WarehouseID int64     `json:"warehouse_id" db:"warehouse_id"`
-	Quantity    int       `json:"quantity" db:"quantity"`
-	Active      bool      `json:"active" db:"active"`
-	UpdatedAt   time.Time `json:"updated_at,omitempty" db:"updated_at"`
+	ProductID        int64     `json:"productId" db:"product_id"`
+	WarehousePlaceID int64     `json:"warehousePlaceId" db:"warehouse_place_id"`
+	Quantity         int       `json:"quantity" db:"quantity"`
+	Active           bool      `json:"active" db:"active"`
+	UpdatedAt        time.Time `json:"updatedAt" db:"updated_at"`
 }
 
 func (s *Stock) IsActive() bool {
@@ -26,12 +28,25 @@ func (s *Stock) Deactivate() {
 	s.Active = false
 }
 
+func (s *Stock) Add(quantity int) {
+	s.Quantity += quantity
+}
+
+func (s *Stock) Remove(quantity int) {
+	s.Quantity -= quantity
+}
+
 type StockMovement struct {
-	ID          int64             `json:"id" db:"id"`
-	ProductID   int64             `json:"product_id" db:"product_id"`
-	WarehouseID int64             `json:"warehouse_id" db:"warehouse_id"`
-	Type        StockMovementType `json:"type" db:"type"`
-	Quantity    int               `json:"quantity" db:"quantity"`
-	CreatedAt   time.Time         `json:"created_at" db:"created_at"`
-	Reason      string            `json:"reason" db:"reason"`
+	ID               int64             `json:"id" db:"id"`
+	ProductID        int64             `json:"productId" db:"product_id"`
+	WarehousePlaceID int64             `json:"warehousePlaceId" db:"warehouse_place_id"`
+	Type             StockMovementType `json:"type" db:"type"`
+	Quantity         int               `json:"quantity" db:"quantity"`
+
+	// rastreabilidade
+	ReferenceID   *int64  `json:"referenceId,omitempty" db:"reference_id"`     //puchaseID
+	ReferenceType *string `json:"referenceType,omitempty" db:"reference_type"` //PURCHASE
+
+	Reason    string    `json:"reason,omitempty" db:"reason"` //Inventário corrigido
+	CreatedAt time.Time `json:"createdAt" db:"created_at"`
 }
