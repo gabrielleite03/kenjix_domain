@@ -16,6 +16,7 @@ type Stock struct {
 	ID               int64     `json:"id" db:"id"`
 	ProductID        int64     `json:"productId" db:"product_id"`
 	WarehousePlaceID int64     `json:"warehousePlaceId" db:"warehouse_place_id"`
+	PurchaseItemID   int64     `json:"purchaseItemId" db:"purchase_item_id"`
 	Quantity         int       `json:"quantity" db:"quantity"`
 	Active           bool      `json:"active" db:"active"`
 	UpdatedAt        time.Time `json:"updatedAt" db:"updated_at"`
@@ -41,6 +42,7 @@ type StockMovement struct {
 	ID               int64             `json:"id" db:"id"`
 	ProductID        int64             `json:"productId" db:"product_id"`
 	WarehousePlaceID int64             `json:"warehousePlaceId" db:"warehouse_place_id"`
+	PurchseItemID    int64             `json:"purchaseItemId" db:"purchase_item_id"`
 	Type             StockMovementType `json:"type" db:"type"`
 	Quantity         int               `json:"quantity" db:"quantity"`
 
