@@ -13,6 +13,7 @@ const (
 )
 
 type Stock struct {
+	ID               int64     `json:"id" db:"id"`
 	ProductID        int64     `json:"productId" db:"product_id"`
 	WarehousePlaceID int64     `json:"warehousePlaceId" db:"warehouse_place_id"`
 	Quantity         int       `json:"quantity" db:"quantity"`
