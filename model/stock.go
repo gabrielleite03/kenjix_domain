@@ -13,13 +13,13 @@ const (
 )
 
 type Stock struct {
-	ID               int64     `json:"id" db:"id"`
-	ProductID        int64     `json:"productId" db:"product_id"`
-	WarehousePlaceID int64     `json:"warehousePlaceId" db:"warehouse_place_id"`
-	PurchaseItemID   int64     `json:"purchaseItemId" db:"purchase_item_id"`
-	Quantity         int       `json:"quantity" db:"quantity"`
-	Active           bool      `json:"active" db:"active"`
-	UpdatedAt        time.Time `json:"updatedAt" db:"updated_at"`
+	ID             int64          `json:"id" db:"id"`
+	Product        Product        `json:"product" db:"product_id"`
+	WarehousePlace WarehousePlace `json:"warehousePlace" db:"warehouse_place_id"`
+	PurchaseItem   PurchaseItem   `json:"purchaseItem" db:"purchase_item_id"`
+	Quantity       int            `json:"quantity" db:"quantity"`
+	Active         bool           `json:"active" db:"active"`
+	UpdatedAt      time.Time      `json:"updatedAt" db:"updated_at"`
 }
 
 func (s *Stock) IsActive() bool {
