@@ -1,13 +1,26 @@
 package model
 
+import (
+	"time"
+
+	"github.com/shopspring/decimal"
+)
+
 type Marketplace struct {
-	ID              int64   `json:"id" db:"id"`
-	Name            string  `json:"name" db:"name"`
-	Logo            string  `json:"logo" db:"logo"`
-	ComissionRate   float64 `json:"comission_rate" db:"comission_rate"`
-	IntegrationType string  `json:"integration_type" db:"integration_type"`
-	ApiKey          string  `json:"api_key" db:"api_key"`
-	ApiSecret       string  `json:"api_secret" db:"api_secret"`
-	ApiEndpoint     string  `json:"api_endpoint" db:"api_endpoint"`
-	Active          bool    `json:"active" db:"active"`
+	ID   int64   `json:"id" db:"id"`
+	Name string  `json:"name" db:"name"`
+	Logo *string `json:"logo,omitempty" db:"logo"`
+
+	Status          string          `json:"status" db:"status"`
+	CommissionRate  decimal.Decimal `json:"commissionRate" db:"commission_rate"`
+	IntegrationType string          `json:"integrationType" db:"integration_type"`
+
+	APIURL      *string `json:"apiUrl,omitempty" db:"api_url"`
+	APIKey      *string `json:"apiKey,omitempty" db:"api_key"`
+	APISecret   *string `json:"apiSecret,omitempty" db:"api_secret"`
+	APIEndpoint *string `json:"apiEndpoint,omitempty" db:"api_endpoint"`
+
+	CreatedAt time.Time  `json:"createdAt" db:"created_at"`
+	UpdatedAt time.Time  `json:"updatedAt" db:"updated_at"`
+	DeletedAt *time.Time `json:"deletedAt,omitempty" db:"deleted_at"`
 }
