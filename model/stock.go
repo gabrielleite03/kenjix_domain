@@ -53,3 +53,21 @@ type StockMovement struct {
 	Reason    string    `json:"reason,omitempty" db:"reason"` //Inventário corrigido
 	CreatedAt time.Time `json:"createdAt" db:"created_at"`
 }
+
+type StockMovementEager struct {
+	ID int64 `json:"id" db:"id"`
+
+	Product        Product        `json:"product" db:"product"`
+	WarehousePlace WarehousePlace `json:"warehouse_place" db:"warehouse_place"`
+	PurchaseItem   PurchaseItem   `json:"purchase_item" db:"purchase_item"`
+
+	Type     StockMovementType `json:"type" db:"type"`
+	Quantity int               `json:"quantity" db:"quantity"`
+
+	ReferenceID   *int64  `json:"reference_id,omitempty" db:"reference_id"`
+	ReferenceType *string `json:"reference_type,omitempty" db:"reference_type"`
+
+	Reason *string `json:"reason,omitempty" db:"reason"`
+
+	CreatedAt time.Time `json:"created_at" db:"created_at"`
+}
