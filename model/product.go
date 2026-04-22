@@ -8,6 +8,8 @@ type Product struct {
 	SKU         string          `json:"sku" db:"sku"`
 	Price       decimal.Decimal `json:"price" db:"price"`
 	Marca       string          `json:"marca" db:"marca"`
+	EAN         string          `json:"ean" db:"ean"`
+	NCM         string          `json:"ncm" db:"ncm"`
 	Description string          `json:"description" db:"description"`
 	Active      bool            `json:"active" db:"active"`
 	Volume      decimal.Decimal `json:"volume" db:"volume"`
