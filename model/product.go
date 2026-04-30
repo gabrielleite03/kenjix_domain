@@ -3,18 +3,19 @@ package model
 import "github.com/shopspring/decimal"
 
 type Product struct {
-	ID          int64           `json:"id" db:"id"`
-	Name        string          `json:"name" db:"name"`
-	SKU         string          `json:"sku" db:"sku"`
-	Price       decimal.Decimal `json:"price" db:"price"`
-	Marca       string          `json:"marca" db:"marca"`
-	EAN         *string         `json:"ean" db:"ean"`
-	NCM         *string         `json:"ncm" db:"ncm"`
-	Description string          `json:"description" db:"description"`
-	Active      bool            `json:"active" db:"active"`
-	Volume      decimal.Decimal `json:"volume" db:"volume"`
-	CategoryID  *int64          `json:"category_id,omitempty" db:"category_id"`
-	Category    *Category       `json:"category,omitempty"`
+	ID          int64            `json:"id" db:"id"`
+	Name        string           `json:"name" db:"name"`
+	SKU         string           `json:"sku" db:"sku"`
+	Weight      *decimal.Decimal `json:"weight" db:"weight"`
+	Price       decimal.Decimal  `json:"price" db:"price"`
+	Marca       string           `json:"marca" db:"marca"`
+	EAN         *string          `json:"ean" db:"ean"`
+	NCM         *string          `json:"ncm" db:"ncm"`
+	Description string           `json:"description" db:"description"`
+	Active      bool             `json:"active" db:"active"`
+	Volume      decimal.Decimal  `json:"volume" db:"volume"`
+	CategoryID  *int64           `json:"category_id,omitempty" db:"category_id"`
+	Category    *Category        `json:"category,omitempty"`
 
 	Prices []ProductPrice `json:"prices,omitempty"` // preços por marketplace
 	Stocks []Stock        `json:"stocks,omitempty"` // estoque por warehouse
