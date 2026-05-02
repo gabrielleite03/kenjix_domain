@@ -1,6 +1,10 @@
 package model
 
-import "github.com/shopspring/decimal"
+import (
+	"time"
+
+	"github.com/shopspring/decimal"
+)
 
 type Product struct {
 	ID          int64            `json:"id" db:"id"`
@@ -20,9 +24,10 @@ type Product struct {
 	Prices []ProductPrice `json:"prices,omitempty"` // preços por marketplace
 	Stocks []Stock        `json:"stocks,omitempty"` // estoque por warehouse
 
-	Properties []ProductProperty `json:"properties,omitempty"`
-	Images     []ProductImage    `json:"images,omitempty"`
-	Videos     []ProductVideo    `json:"videos,omitempty"`
+	Properties          []ProductProperty    `json:"properties,omitempty"`
+	Images              []ProductImage       `json:"images,omitempty"`
+	Videos              []ProductVideo       `json:"videos,omitempty"`
+	ProductMarketplaces []ProductMarketplace `json:"product_marketplaces,omitempty"`
 }
 
 type ProductPrice struct {
@@ -68,4 +73,22 @@ type ProductVideo struct {
 	ProductID int64   `json:"product_id" db:"product_id"`
 	URL       string  `json:"url" db:"url"`
 	Provider  *string `json:"provider,omitempty" db:"provider"`
+}
+
+type ProductMarketplace struct {
+	ID            int64 `db:"id"`
+	ProductID     int64 `db:"product_id"`
+	MarketplaceID int64 `db:"marketplace_id"`
+
+	ExternalID *string `db:"external_id"` // pode ser null
+	ProductURL string  `db:"product_url"`
+
+	Price       *decimal.Decimal `db:"price"` // nullable
+	ListingType *string          `db:"listing_type"`
+	Status      *string          `db:"status"`
+
+	Active bool `db:"active"`
+
+	CreatedAt time.Time `db:"created_at"`
+	UpdatedAt time.Time `db:"updated_at"`
 }
