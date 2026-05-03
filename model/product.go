@@ -28,6 +28,8 @@ type Product struct {
 	Images              []ProductImage       `json:"images,omitempty"`
 	Videos              []ProductVideo       `json:"videos,omitempty"`
 	ProductMarketplaces []ProductMarketplace `json:"product_marketplaces,omitempty"`
+	IsKit               bool                 `json:"is_kit" db:"is_kit"` // indica se é um kit (produto pai)
+	KitComponents       []ProductKit         `json:"kit_components,omitempty"`
 }
 
 type ProductPrice struct {
@@ -91,4 +93,11 @@ type ProductMarketplace struct {
 
 	CreatedAt time.Time `db:"created_at"`
 	UpdatedAt time.Time `db:"updated_at"`
+}
+
+type ProductKit struct {
+	ID                 int64 `db:"id"`
+	ProductID          int64 `db:"product_id"`           // KIT (produto pai)
+	ComponentProductID int64 `db:"component_product_id"` // produto componente
+	Quantity           int   `db:"quantity"`
 }
