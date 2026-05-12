@@ -61,13 +61,15 @@ func (s *SalesOrder) Deactivate() {
 }
 
 type SalesOrderItem struct {
-	SalesOrderID int64           `json:"sales_order_id" db:"sales_order_id"`
-	ProductID    int64           `json:"product_id" db:"product_id"`
-	Quantity     int             `json:"quantity" db:"quantity"`
-	UnitPrice    decimal.Decimal `json:"unit_price" db:"unit_price"`
+	SalesOrderID   int64 `json:"sales_order_id" db:"sales_order_id"`
+	PurchaseItemID int64 `json:"purchase_item_id" db:"purchase_item_id"`
+
+	Quantity  int             `json:"quantity" db:"quantity"`
+	UnitPrice decimal.Decimal `json:"unit_price" db:"unit_price"`
 
 	SalesOrder *SalesOrder `json:"sales_order,omitempty"`
-	Product    *Product    `json:"product,omitempty"`
+
+	PurchaseItem *PurchaseItem `json:"purchase_item,omitempty"`
 }
 
 func (i *SalesOrderItem) Total() decimal.Decimal {
