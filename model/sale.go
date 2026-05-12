@@ -27,9 +27,25 @@ type SalesOrder struct {
 	Status          string          `json:"status" db:"status"`
 	PaymentMethodID int64           `json:"payment_method_id" db:"payment_method_id"`
 	Active          bool            `json:"active" db:"active"`
-	CreatedAt       time.Time       `json:"created_at" db:"created_at"`
+
+	CustomerName     *string `json:"customer_name,omitempty" db:"customer_name"`
+	CustomerDocument *string `json:"customer_document,omitempty" db:"customer_document"`
+
+	MarketplaceID   *int64  `json:"marketplace_id,omitempty" db:"marketplace_id"`
+	ExternalOrderID *string `json:"external_order_id,omitempty" db:"external_order_id"`
+	ExternalPackID  *string `json:"external_pack_id,omitempty" db:"external_pack_id"`
+
+	PaymentStatus  *string `json:"payment_status,omitempty" db:"payment_status"`
+	DeliveryStatus *string `json:"delivery_status,omitempty" db:"delivery_status"`
+
+	CreatedAt time.Time  `json:"created_at" db:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty" db:"updated_at"`
 
 	PaymentMethod *PaymentMethod `json:"payment_method,omitempty"`
+
+	Marketplace *Marketplace `json:"marketplace,omitempty"`
+
+	Invoice *SalesOrderInvoice `json:"invoice,omitempty"`
 }
 
 func (s *SalesOrder) Total() decimal.Decimal {
